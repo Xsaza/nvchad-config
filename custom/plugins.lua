@@ -9,7 +9,8 @@ local plugins = {
         "dockerfile-language-server",
         "yaml-language-server",
         "html-lsp",
-        "css-lsp"
+        "css-lsp",
+        "emmet-ls"
       },
     },
   },
@@ -19,6 +20,14 @@ local plugins = {
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end
+  },
+  {
+     "rbong/vim-flog",
+      lazy = true,
+      cmd = { "Flog", "Flogsplit", "Floggit" },
+      dependencies = {
+        "tpope/vim-fugitive",
+      },
   },
   {
     "nvim-treesitter/nvim-treesitter",

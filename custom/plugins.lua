@@ -10,12 +10,21 @@ local plugins = {
         "yaml-language-server",
         "html-lsp",
         "css-lsp",
-        "emmet-ls"
+        "emmet-ls",
+        "eslint_d",
+        "prettierd",
+        "stylua"
       },
     },
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "jose-elias-alvarez/null-ls.nvim",
+      config = function ()
+        require "custom.configs.null-ls"
+      end
+    },
     config = function ()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
@@ -31,6 +40,9 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+    },
     opts = {
       ensure_installed = {
         "vim",
@@ -42,9 +54,16 @@ local plugins = {
         "tsx",
         "json",
         "rust"
-      }
-    }
-  }
+      },
+      autotag = {
+        enable = true,
+        enable_rename = true,
+        enable_close = true,
+        enable_close_on_slash = false,
+        filetypes = { "html", "javascript", "typescript", "javascriptreact", "typescriptreact", "jsx", "tsx" }
+      },
+    },
+  },
 }
 
 return plugins

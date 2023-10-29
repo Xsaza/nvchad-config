@@ -11,5 +11,6 @@ map("v", "<A-S-k>", ":'<,'>t '><CR>gv=gv", { noremap = true });
 
 -- relative number by default
 opt.relativenumber = true;
-
+-- lines before cursor
 opt.scrolloff = 15;
+
